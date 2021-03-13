@@ -7,4 +7,4 @@ const cena1 = new Cena(canvas);
 const pc = new Sprite();
 cena1.adicionar(pc);
 
-cena1.desenhar();
+cena1.quadro(0);
