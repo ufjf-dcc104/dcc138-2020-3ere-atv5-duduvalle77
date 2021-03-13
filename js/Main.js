@@ -14,7 +14,7 @@ document.body.appendChild(assets.img("orc"));
 
 
 const canvas = document.querySelector("canvas");
-const cena1 = new Cena(canvas);
+const cena1 = new Cena(canvas,assets);
 
 const pc = new Sprite({vx: 10});
 const en1 = new Sprite({x: 200, color:"red"});
