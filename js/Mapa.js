@@ -19,21 +19,15 @@ export default class Mapa{
             for (let c = 0; c < this.COLUNAS; c++) {
                 switch (this.tiles[l][c]){
                     case 1:
-                        ctx.fillStyle = "grey"
-                        ctx.strokeStyle = "black";
+                        ctx.drawImage(this.cena.assets.img("mapa"), 100, 420, 32, 32, c * this.SIZE, l * this.SIZE, 32, 32);
                         break;
-                    case 1:
-                        ctx.fillStyle = "red"
-                        ctx.strokeStyle = "orange"; 
+                    case 2:
+                        ctx.drawImage(this.cena.assets.img("mapa"), 510, 280, 32, 32, c * this.SIZE, l * this.SIZE, 32, 32);
                         break;
                     default:
-                        ctx.fillStyle = "black" 
-                        ctx.strokeStyle = "grey";
+                        ctx.drawImage(this.cena.assets.img("mapa"), 600, 90, 32, 32, c * this.SIZE, l * this.SIZE, 32, 32);
                         break;
                 }
-                ctx.lineWidth = 1;
-                ctx.fillRect(c*this.SIZE, l*this.SIZE, this.SIZE, this.SIZE);
-                ctx.strokeRect(c*this.SIZE, l*this.SIZE, this.SIZE, this.SIZE);
             }
         }
     }
