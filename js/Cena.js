@@ -1,5 +1,3 @@
-import Sprite from "./Sprite.js";
-
 export default class Cena {
     constructor(canvas, assets = null){
         this.canvas = canvas;
