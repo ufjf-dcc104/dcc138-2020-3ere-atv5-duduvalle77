@@ -38,25 +38,32 @@ function adicionaSprite()
   {
     y = mapa1.SIZE * y + mapa1.SIZE / 2;
     x = mapa1.SIZE * x + mapa1.SIZE / 2;
-    let randomSpeed = Math.floor(Math.random() * 4);
-    let vx1 = 0;
-    let vy1 = 0;
-    switch (randomSpeed) {
-        case 0:
-            vx1 = 10;
-            break;
-        case 1:
-            vx1 = -10;
-            break;
-        case 2:
-            vy1 = 10;
-            break;
-        default:
-            vy1 = -10;
-            break;
+    if (x > 416 || x < 32 || y > 288 || y < 32) 
+    {
+        adicionaSprite();
     }
+    else
+    {
+        let randomSpeed = Math.floor(Math.random() * 4);
+        let vx1 = 0;
+        let vy1 = 0;
+        switch (randomSpeed) {
+            case 0:
+                vx1 = 10;
+                break;
+            case 1:
+                vx1 = -10;
+                break;
+            case 2:
+                vy1 = 10;
+                break;
+            default:
+                vy1 = -10;
+                break;
+        }
 
-    cena1.adicionar(new Sprite({ x: x, y: y, vx: vx1, vy: vy1, color: "blue" }));
+        cena1.adicionar(new Sprite({ x: x, y: y, vx: vx1, vy: vy1, color: "blue" }));
+    }
   } else {
     adicionaSprite();
   }
