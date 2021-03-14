@@ -1,5 +1,7 @@
+import Sprite from "./Sprite.js";
+
 export default class Cena {
-    constructor(canvas, assets = null, mixer){
+    constructor(canvas, assets = null){
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
         this.sprites = [];
@@ -51,7 +53,7 @@ export default class Cena {
         this.iniciar();
         this.t0 = t;
     }
-
+    
     iniciar(){
         this.idAnim = requestAnimationFrame((t) => {this.quadro(t);});
     }
@@ -68,7 +70,7 @@ export default class Cena {
                 const spriteB = this.sprites[b];
                 if(spriteA.colidiuCom(spriteB))
                 {
-                    assets.play("boom");
+                    this.assets.play("boom");
                     this.quandoColidir(spriteA, spriteB);
                 }
             }
