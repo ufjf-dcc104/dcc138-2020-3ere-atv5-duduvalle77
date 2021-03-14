@@ -1,5 +1,5 @@
 export default class Cena {
-    constructor(canvas, assets = null){
+    constructor(canvas, assets = null, mixer){
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
         this.sprites = [];
@@ -68,6 +68,7 @@ export default class Cena {
                 const spriteB = this.sprites[b];
                 if(spriteA.colidiuCom(spriteB))
                 {
+                    assets.play("boom");
                     this.quandoColidir(spriteA, spriteB);
                 }
             }
