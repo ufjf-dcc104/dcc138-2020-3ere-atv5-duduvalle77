@@ -55,6 +55,13 @@ pc.controlar = function (dt) {
 };
 cena1.adicionar(pc);
 
+function perseguePC(dt) {
+    this.vx = 25*Math.sign(pc.x - this.x);
+    this.vy = 25*Math.sign(pc.y - this.y);
+}
+
+const en1 = new Sprite({x: 300, y: 110, vx: -10, color: "red", controlar: perseguePC});
+cena1.adicionar(en1);
 cena1.iniciar();
 
 document.addEventListener("keydown", (e) => {
