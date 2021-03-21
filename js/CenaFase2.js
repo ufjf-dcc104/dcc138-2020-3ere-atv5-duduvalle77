@@ -45,7 +45,7 @@ export default class CenaFase2 extends Cena{
         mapa1.carregaMapa(modeloMapa2);
         this.configuraMapa(mapa1);
 
-        const pc = new Sprite({x: 50, vx: 10});
+        const pc = new Sprite({x: 32*2, y: 32*5});
         pc.tags.add("pc");
         const cena = this;
         pc.controlar = function (dt) {
@@ -71,11 +71,17 @@ export default class CenaFase2 extends Cena{
             this.vy = 25*Math.sign(pc.y - this.y);
         }
 
-        //const en1 = new Sprite({x: 300, y: 110, vx: -10, color: "red", controlar: perseguePC, tags:["enemy"]});
-        //this.adicionar(en1);
-        const por = new Sprite({x: 300, y: 110, color: "blue", tags:["portal"]});
+        const en1 = new Sprite({x: 7.5*32, y: 32*6.5, color: "red", controlar: perseguePC, tags:["enemy"]});
+        const en2 = new Sprite({x: 10.5*32, y: 32*1.5, color: "red", controlar: perseguePC, tags:["enemy"]});
+        this.adicionar(en1);
+        this.adicionar(en2);
+        const por = new Sprite({x: 12*32, y: 32*5, color: "blue", tags:["portal"]});
         this.adicionar(por);
-        const moeda = new Sprite({x: 300, y: 170, color: "yellow", tags:["moeda"]});
-        this.adicionar(moeda);
+        const moeda1 = new Sprite({x: 12.5*32, y: 32*1.5, color: "yellow", tags:["moeda"]});
+        const moeda2 = new Sprite({x: 7.5*32, y: 32*5, color: "yellow", tags:["moeda"]});
+        const moeda3 = new Sprite({x: 12.5*32, y: 32*8.5, color: "yellow", tags:["moeda"]});
+        this.adicionar(moeda1);
+        this.adicionar(moeda2);
+        this.adicionar(moeda3);
     }
 }
