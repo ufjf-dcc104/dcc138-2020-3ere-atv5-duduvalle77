@@ -12,7 +12,8 @@ const assets = new AssetManager(mixer);
 
 assets.carregaImagem("garota", "assets/garota.png");
 assets.carregaImagem("esqueleto", "assets/skelly.png");
-assets.carregaImagem("orc", "assets/orc.png");
+assets.carregaImagem("coin", "assets/coin.png");
+assets.carregaImagem("portal", "assets/portal.png");
 assets.carregaImagem("mapa", "assets/base_out_atlas.png");
 assets.carregaAudio("moeda", "assets/coin.wav");
 assets.carregaAudio("boom", "assets/boom.wav");
@@ -28,7 +29,6 @@ input.configurarTeclado({
     "ArrowUp": "MOVE_CIMA",
     "ArrowDown": "MOVE_BAIXO",
     " ": "PROXIMA_CENA"
-
 });
 
 const game  = new Game(canvas, assets, input);
