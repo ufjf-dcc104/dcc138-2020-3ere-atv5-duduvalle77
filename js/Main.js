@@ -66,17 +66,17 @@ function perseguePC(dt) {
 
 const en1 = new Sprite({x: 300, y: 110, vx: -10, color: "red", controlar: perseguePC});
 cena1.adicionar(en1);
-cena1.iniciar();
+game.iniciar();
 
 document.addEventListener("keydown", (e) => {
     switch (e.key) {
         case "s":
-            cena1.iniciar();
+            game.iniciar();
             break;
-        case "S":
-            cena1.parar();
+        case "p":
+            game.parar();
             break;
-        case "c":
+        case "m":
             assets.play("moeda");
             break;
         case "b":
