@@ -2,7 +2,8 @@ import AssetManager from "./AssetManager.js";
 import Mixer from "./Mixer.js";
 import InputManager from "./InputManager.js";
 import Game from "./Game.js";
-import CenaJogo from "./CenaJogo.js";
+import CenaFase1 from "./CenaFase1.js";
+import CenaFase2 from "./CenaFase2.js";
 import CenaCarregando from "./CenaCarregando.js";
 import CenaFim from "./CenaFim.js";
 
@@ -17,6 +18,7 @@ assets.carregaImagem("portal", "assets/portal.png");
 assets.carregaImagem("mapa", "assets/base_out_atlas.png");
 assets.carregaAudio("moeda", "assets/coin.wav");
 assets.carregaAudio("boom", "assets/boom.wav");
+assets.carregaAudio("portal", "assets/portal.wav");
 
 
 const canvas = document.querySelector("canvas");
@@ -34,11 +36,13 @@ input.configurarTeclado({
 const game  = new Game(canvas, assets, input);
 
 const cena0 = new CenaCarregando();
-const cena1 = new CenaJogo();
-const cena2 = new CenaFim();
+const cena1 = new CenaFase1();
+const cena2 = new CenaFase2();
+const cena3 = new CenaFim();
 game.adicionarCena("carregando", cena0);
-game.adicionarCena("jogo", cena1);
-game.adicionarCena("fim", cena2);
+game.adicionarCena("fase1", cena1);
+game.adicionarCena("fase2", cena2);
+game.adicionarCena("fim", cena3);
 
 game.iniciar();
 
