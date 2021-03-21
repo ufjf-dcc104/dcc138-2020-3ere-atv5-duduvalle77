@@ -14,13 +14,13 @@ export default class InputManager {
         addEventListener("keydown", function(e){
             const comando = that.teclas.get(e.key);
             if(comando){
-                that.comandos.set(coamndo, true);
+                that.comandos.set(comando, true);
             }
         });
         addEventListener("keyup", function(e){
             const comando = that.teclas.get(e.key);
             if(comando){
-                that.comandos.set(coamndo, false);
+                that.comandos.set(comando, false);
             }
         });
     }
