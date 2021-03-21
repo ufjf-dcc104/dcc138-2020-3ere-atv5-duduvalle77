@@ -22,8 +22,8 @@ assets.carregaAudio("portal", "assets/portal.wav");
 
 
 const canvas = document.querySelector("canvas");
-canvas.width = 14*32;
-canvas.height = 10*32;
+canvas.width = 14*64;
+canvas.height = 10*64;
 
 input.configurarTeclado({
     "ArrowLeft": "MOVE_ESQUERDA",

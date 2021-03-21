@@ -1,5 +1,5 @@
 export default class Sprite {
-    constructor({x=100, y=100, w=20, h=20, color="white", vx=0, vy=0, controlar=()=>{}, tags = []}={}){
+    constructor({x=100, y=100, w=32, h=32, color="white", vx=0, vy=0, controlar=()=>{}, tags = []}={}){
         this.x = x;
         this.y = y;
         this.vx = vx;
@@ -12,11 +12,81 @@ export default class Sprite {
         this.mx = 0;
         this.my = 0;
         this.tags = new Set();
+        this.quadro = 0;
+        this.pose = 0;
         tags.forEach((tag)=>{
             this.tags.add(tag);
         });
     }
-    desenhar(ctx){
+    desenhar(ctx, dt){
+        if(this.tags.has("pc")){
+            if(this.vx > 0){
+                this.pose = 11;
+                this.quadro = (this.quadro > 8) ? 0 : this.quadro + 9*dt;
+            }else if(this.vx < 0){
+                this.pose = 9;
+                this.quadro = (this.quadro > 8) ? 0 : this.quadro + 9*dt;
+            } 
+            if(this.vy > 0){
+                this.pose = 10;
+                this.quadro = (this.quadro > 8) ? 0 : this.quadro + 9*dt;
+            } else if (this.vy < 0){
+                this.pose = 8;
+                this.quadro = (this.quadro > 8) ? 0 : this.quadro + 9*dt;
+            } 
+            if(this.vx == 0 && this.vy == 0) {
+                this.pose = 10;
+                this.quadro = 0;
+            }
+            ctx.drawImage(this.cena.assets.img("garota"), 
+                //sx,sy,sh,sw
+                Math.floor(this.quadro)*64 , Math.floor(this.pose)*64, 64, 64,
+                //dx,dy,dh,dw
+                this.x - 32, this.y - 32 - 5, 64, 64
+            ); 
+        } else if(this.tags.has("enemy")){
+            if(this.vx > 0){
+                this.pose = 11;
+                this.quadro = (this.quadro > 8) ? 0 : this.quadro + 9*dt;
+            }else if(this.vx < 0){
+                this.pose = 9;
+                this.quadro = (this.quadro > 8) ? 0 : this.quadro + 9*dt;
+            } 
+            if(this.vy > 0){
+                this.pose = 10;
+                this.quadro = (this.quadro > 8) ? 0 : this.quadro + 9*dt;
+            } else if (this.vy < 0){
+                this.pose = 8;
+                this.quadro = (this.quadro > 8) ? 0 : this.quadro + 9*dt;
+            } 
+            if(this.vx == 0 && this.vy == 0) {
+                this.pose = 10;
+                this.quadro = 0;
+            }
+            ctx.drawImage(this.cena.assets.img("esqueleto"), 
+                //sx,sy,sh,sw
+                Math.floor(this.quadro)*64 , Math.floor(this.pose)*64, 64, 64,
+                //dx,dy,dh,dw
+                this.x - 32, this.y - 32 - 5, 64, 64
+            );  
+        } else if(this.tags.has("moeda")){
+            this.quadro = (this.quadro > 5) ? 0 : this.quadro + 9*dt;
+            ctx.drawImage(this.cena.assets.img("coin"), 
+                //sx,sy,sh,sw
+                Math.floor(this.quadro)*200 , 23, 200, 200,
+                //dx,dy,dh,dw
+                this.x - 16, this.y - 16, 32, 32
+            ); 
+        } else if(this.tags.has("portal")){
+            
+            this.quadro = (this.quadro > 3) ? 0 : this.quadro + 9*dt;
+            ctx.drawImage(this.cena.assets.img("portal"), 
+                //sx,sy,sh,sw
+                Math.floor(this.quadro)*251, 0, 251, 590,
+                //dx,dy,dh,dw
+                this.x - 23, this.y - 23, 46, 46
+            ); 
+        } else {
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x - this.w/2, this.y - this.h/2, this.w, this.h);
         ctx.strokeStyle = "blue";
@@ -26,6 +96,7 @@ export default class Sprite {
             this.cena.mapa.SIZE,
             this.cena.mapa.SIZE
         );
+        }
     }
     controlar(dt){
 

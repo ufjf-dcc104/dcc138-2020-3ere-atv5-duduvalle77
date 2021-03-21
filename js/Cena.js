@@ -6,7 +6,7 @@ export default class Cena {
         this.game = null;
         this.preparar();
     }
-    desenhar(){
+    desenhar(dt){
         this.ctx.fillStyle = "lightblue";
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         
@@ -15,7 +15,7 @@ export default class Cena {
         if(this.assets.acabou()){
             for (let s = 0; s < this.sprites.length; s++) {
                 const sprite = this.sprites[s];
-                sprite.desenhar(this.ctx);
+                sprite.desenhar(this.ctx, dt);
                 sprite.aplicaRestricoes();
             }
         }
@@ -42,7 +42,7 @@ export default class Cena {
         this.dt = (t - this.t0)/1000;
 
         this.passo(this.dt);
-        this.desenhar();
+        this.desenhar(this.dt);
         this.checaColisao();
         this.removerSprites();
 

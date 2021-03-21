@@ -4,7 +4,7 @@ export default class CenaFim extends Cena{
     desenhar(){
         this.ctx.fillStyle = "black";
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.font = "20px Impact";
+        this.ctx.font = "40px Impact";
         this.ctx.fillStyle = "red";
         this.ctx.textAlign = "center";
         this.ctx.fillText("Moedas coletadas: " + this.game.pontuacao, this.canvas.width/2, this.canvas.height/2-40);

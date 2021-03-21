@@ -41,12 +41,11 @@ export default class CenaFase2 extends Cena{
     }
     preparar(){
         super.preparar();
-        const mapa1 = new Mapa(10,14,32);
+        const mapa1 = new Mapa(10,14,64);
         mapa1.carregaMapa(modeloMapa2);
         this.configuraMapa(mapa1);
 
-        const pc = new Sprite({x: 32*2, y: 32*5});
-        pc.tags.add("pc");
+        const pc = new Sprite({x: 64*2, y: 64*5, w:28, h:49, tags:["pc"]});
         const cena = this;
         pc.controlar = function (dt) {
             if(cena.input.comandos.get("MOVE_ESQUERDA")){
@@ -71,15 +70,15 @@ export default class CenaFase2 extends Cena{
             this.vy = 25*Math.sign(pc.y - this.y);
         }
 
-        const en1 = new Sprite({x: 7.5*32, y: 32*6.5, color: "red", controlar: perseguePC, tags:["enemy"]});
-        const en2 = new Sprite({x: 10.5*32, y: 32*1.5, color: "red", controlar: perseguePC, tags:["enemy"]});
+        const en1 = new Sprite({x: 7.5*64, y: 64*6.5, w:28, h:49, color: "red", controlar: perseguePC, tags:["enemy"]});
+        const en2 = new Sprite({x: 10.5*64, y: 64*1.5, w:28, h:49, color: "red", controlar: perseguePC, tags:["enemy"]});
         this.adicionar(en1);
         this.adicionar(en2);
-        const por = new Sprite({x: 12*32, y: 32*5, color: "blue", tags:["portal"]});
+        const por = new Sprite({x: 12*64, y: 64*5, color: "blue", tags:["portal"]});
         this.adicionar(por);
-        const moeda1 = new Sprite({x: 12.5*32, y: 32*1.5, color: "yellow", tags:["moeda"]});
-        const moeda2 = new Sprite({x: 7.5*32, y: 32*5, color: "yellow", tags:["moeda"]});
-        const moeda3 = new Sprite({x: 12.5*32, y: 32*8.5, color: "yellow", tags:["moeda"]});
+        const moeda1 = new Sprite({x: 12.5*64, y: 64*1.5, color: "yellow", tags:["moeda"]});
+        const moeda2 = new Sprite({x: 7.5*64, y: 64*5, color: "yellow", tags:["moeda"]});
+        const moeda3 = new Sprite({x: 12.5*64, y: 64*8.5, color: "yellow", tags:["moeda"]});
         this.adicionar(moeda1);
         this.adicionar(moeda2);
         this.adicionar(moeda3);
