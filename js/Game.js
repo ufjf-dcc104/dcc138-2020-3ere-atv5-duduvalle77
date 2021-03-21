@@ -1,7 +1,8 @@
 export default class Game{
-    constructor(canvas, assets){
+    constructor(canvas, assets, input){
         this.canvas = canvas;
         this.assets = assets;
+        this.input = input;
         this.cenas = new Map();
         this.cena = null;
     }
@@ -18,7 +19,9 @@ export default class Game{
     selecionaCena(chave){
         if(this.cenas.has(chave))
         {
+            this.parar();
             this.cena = this.cenas.get(chave);
+            this.iniciar();
         }
     }
     iniciar(){
