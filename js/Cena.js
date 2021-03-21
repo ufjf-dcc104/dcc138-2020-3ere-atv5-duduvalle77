@@ -19,6 +19,10 @@ export default class Cena {
                 sprite.aplicaRestricoes();
             }
         }
+        this.ctx.font = "20px Impact";
+        this.ctx.fillStyle = "red";
+        this.ctx.textAlign = "center";
+        this.ctx.fillText("Pontuação: " + this.game.pontuacao, this.canvas.width/2, 20);
     }
     adicionar(sprite)
     {
@@ -66,7 +70,6 @@ export default class Cena {
                 const spriteB = this.sprites[b];
                 if(spriteA.colidiuCom(spriteB))
                 {
-                    this.assets.play("boom");
                     this.quandoColidir(spriteA, spriteB);
                 }
             }
