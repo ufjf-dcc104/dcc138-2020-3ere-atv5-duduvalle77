@@ -22,11 +22,11 @@ const canvas = document.querySelector("canvas");
 canvas.width = 14*32;
 canvas.height = 10*32;
 
-/*input.configurarTeclado({
+input.configurarTeclado({
     "ArrowLeft": "MOVE_ESQUERDA",
-    "ArrowLeft": "MOVE_ESQUERDA",
+    "ArrowRight": "MOVE_DIREITA",
 
-});*/
+});
 
 const cena1 = new Cena(canvas,assets);
 
